@@ -9,5 +9,5 @@ export type Task = {
   description?: string
   priority: 'Low' | 'Medium' | 'High'
   dueDate?: Date
-  currentColumn: number
+  columnId: number
 }
