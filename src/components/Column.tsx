@@ -22,19 +22,13 @@ const Column = ({ column, tasks }: ColumnProps) => {
         </div>
       </header>
       <hr />
-      {/* About alternating refs: 
-      * For UX reasons, if there's currently not any card on a list,
-      * dnd-kit's nodeRef will be set to the .task_list_wrapper div.
-      */}
       <div 
-        ref={tasks.length <= 0 ? setNodeRef : undefined}
+        ref={setNodeRef}
         className={styles.task_list_wrapper}>  
-          <div 
-            ref={tasks.length > 0 ? setNodeRef : undefined} 
-            className={styles.task_list}>
-              {tasks.map(task => (
-                <TaskCard key={task.id} task={task}/>
-              ))}
+          <div className={styles.task_list}>
+            {tasks.map(task => (
+              <TaskCard key={task.id} task={task}/>
+            ))}
           </div>
           <button onClick={() => console.log('Adicionar cartão')}>
             + Adicionar cartão
