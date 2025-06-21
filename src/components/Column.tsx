@@ -1,5 +1,6 @@
 import * as types from 'utils/types'
 import styles from 'styles/Column.module.css'
+import TaskCard from 'components/TaskCard'
 
 interface ColumnProps {
   column: types.Column
@@ -19,7 +20,9 @@ const Column = ({ column, tasks }: ColumnProps) => {
       <hr />
       <div className={styles.task_list_wrapper}>  
         <div className={styles.task_list}>
-          {/* T.B.D */}
+          {tasks.map(task => (
+            <TaskCard key={task.id} task={task}/>
+          ))}
         </div>
         <button onClick={() => console.log('Adicionar cartão')}>+ Adicionar cartão</button>
       </div>
