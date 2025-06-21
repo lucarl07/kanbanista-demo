@@ -1,29 +1,27 @@
-import { type ReactNode } from 'react'
+import * as types from 'utils/types'
 import styles from 'styles/Column.module.css'
 
 interface ColumnProps {
-  title: string
-  onAddCard?: () => void
-  onToggleOptions?: () => void
-  children: ReactNode
+  column: types.Column
+  tasks: types.Task[]
 }
 
-const Column = ({ title, onAddCard, onToggleOptions, children }: ColumnProps) => {
+const Column = ({ column, tasks }: ColumnProps) => {
   return (
     <section className={styles.column}>
       <header>
-        <h1>{title}</h1>
+        <h1>{column.name}</h1>
         <div className={styles.button_wrapper}>
-          <button onClick={onAddCard}>+</button>
-          <button onClick={onToggleOptions}>…</button>
+          <button onClick={() => console.log('Adicionar cartão')}>+</button>
+          <button onClick={() => console.log('Mais opções')}>…</button>
         </div>
       </header>
       <hr />
-      <div className={styles.list}>  
-        <ol>
-          {children}
-        </ol>
-        <button onClick={onAddCard}>+ Adicionar cartão</button>
+      <div className={styles.task_list_wrapper}>  
+        <div className={styles.task_list}>
+          {/* T.B.D */}
+        </div>
+        <button onClick={() => console.log('Adicionar cartão')}>+ Adicionar cartão</button>
       </div>
     </section>
   )

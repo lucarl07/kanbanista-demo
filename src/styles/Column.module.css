@@ -20,15 +20,17 @@
   border-color: #000000;
 }
 
-.list {
+.task_list_wrapper {
   display: flex;
   flex-direction: column;
   background-color: #D9D9D9;
   padding: 10px;
   gap: .75rem;
 }
-.list ol {
+
+.task_list {
   display: flex;
   flex-direction: column;
+  list-style-type: none;
   gap: .25rem;
 }
