@@ -16,7 +16,7 @@ import Column from 'components/Column'
 const initialTasks = INITIAL_TASKS as types.Task[]
 const columns = COLUMNS as types.Column[]
 
-export default function App() {
+export default function Board() {
   const [tasks, setTasks] = useState<types.Task[]>(initialTasks)
 
   function handleDragEnd(event: DragEndEvent) {
