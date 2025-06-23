@@ -10,7 +10,8 @@ import styles from 'styles/App.module.css'
 // Modules & components:
 import { useState } from 'react'
 import { DndContext } from '@dnd-kit/core'
-import Column from './components/Column'
+import sortTasks from 'utils/sortTasks'
+import Column from 'components/Column'
 
 const initialTasks = INITIAL_TASKS as types.Task[]
 const columns = COLUMNS as types.Column[]
@@ -26,11 +27,11 @@ export default function App() {
     const taskId = active.id as string
     const newColumnId = over.id as types.Task['columnId']
 
-    setTasks(() => tasks.map(task => task.id === taskId ? {
-      ...task, columnId: newColumnId
-    } : task))
+    setTasks(() => tasks.map(task => task.id === taskId 
+      ? { ...task, columnId: newColumnId }
+      : task))
   }
-
+  
   return (
     <main className={styles.main}>
       <div className={styles.columns}>
@@ -39,7 +40,10 @@ export default function App() {
             <Column 
               key={column.id} 
               column={column} 
-              tasks={tasks.filter(task => task.columnId === column.id)}
+              tasks={tasks
+                .filter(task => task.columnId === column.id)
+                .sort(sortTasks)
+              }
             />
           ))}
         </DndContext>
