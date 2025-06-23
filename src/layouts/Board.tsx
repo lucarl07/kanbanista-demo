@@ -26,10 +26,11 @@ export default function Board() {
 
     const taskId = active.id as string
     const newColumnId = over.id as types.Task['columnId']
-
-    setTasks(() => tasks.map(task => task.id === taskId 
+    const updatedTasks = tasks.map(task => task.id === taskId 
       ? { ...task, columnId: newColumnId }
-      : task))
+      : task)
+
+    setTasks(() => updatedTasks)
   }
   
   return (
