@@ -7,7 +7,7 @@
 
 export default [
   {
-    id: 1,
+    id: crypto.randomUUID(),
     title: 'Discutir campanha com a equipe de vendas',
     description: 'Lorem ipsum dolor sit...',
     priority: 'Low',
@@ -15,7 +15,7 @@ export default [
     columnId: 2
   },
   {
-    id: 2,
+    id: crypto.randomUUID(),
     title: 'A quesito de curiosidade, você sabe até quantos caracteres é possível colocar num título aqui?',
     description: 'Lorem ipsum dolor sit...',
     priority: 'High',
@@ -23,13 +23,13 @@ export default [
     columnId: 3
   },
   {
-    id: 3,
+    id: crypto.randomUUID(),
     title: 'Não muitos...',
     priority: 'High',
     columnId: 3
   },
   {
-    id: 4,
+    id: crypto.randomUUID(),
     title: 'Ir à exposição póstuma de Piet Mondrian',
     description: 'Lorem ipsum dolor sit...',
     priority: 'Medium',
@@ -37,7 +37,7 @@ export default [
     columnId: 3
   },
   {
-    id: 5,
+    id: crypto.randomUUID(),
     title: 'Levar o Billy ao banho e tosa',
     priority: 'Low',
     dueDate: new Date(2025, 6, 22),

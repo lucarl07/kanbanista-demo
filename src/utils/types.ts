@@ -1,10 +1,12 @@
+export type UUID = `${string}-${string}-${string}-${string}-${string}`
+
 export type Column = {
-  id: number
+  id: number // Will probably implement a way to retrofit UUIDs here on official releases.
   name: string
 }
 
 export type Task = {
-  id: number
+  id: UUID
   title: string
   description?: string
   priority: 'Low' | 'Medium' | 'High'

@@ -23,7 +23,7 @@ export default function App() {
 
     if (!over) return;
 
-    const taskId = active.id as number
+    const taskId = active.id as string
     const newColumnId = over.id as types.Task['columnId']
 
     setTasks(() => tasks.map(task => task.id === taskId ? {
