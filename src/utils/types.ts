@@ -1,3 +1,5 @@
+export type TaskPriority = 'Low' | 'Medium' | 'High'
+
 export type UUID = `${string}-${string}-${string}-${string}-${string}`
 
 export type Column = {
@@ -9,7 +11,7 @@ export type Task = {
   id: UUID
   title: string
   description?: string
-  priority: 'Low' | 'Medium' | 'High'
+  priority: TaskPriority
   dueDate?: Date
   columnId: number
 }
