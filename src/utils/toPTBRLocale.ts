@@ -1,5 +1,3 @@
-
-
 export default function toPTBRLocale(value: Date, type: 'date' | 'time') {
   const dateOptions: Intl.DateTimeFormatOptions = {
     year: "numeric",
