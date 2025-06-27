@@ -2,7 +2,7 @@ import { type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import styles from 'styles/Modal.module.css'
 
-interface ModalProps {
+export interface ModalProps {
   name?: string
   open: boolean
   children?: ReactNode

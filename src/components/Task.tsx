@@ -4,7 +4,7 @@ import styles from 'styles/TaskCard.module.css'
 import { useDraggable } from '@dnd-kit/core'
 import imgTaskDescription from 'assets/images/task_description.png'
 
-interface TaskProps {
+export interface TaskProps {
   task: types.Task
 }
 
