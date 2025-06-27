@@ -1,4 +1,5 @@
 export type TaskPriority = 'Low' | 'Medium' | 'High'
+export type TranslatedTaskPriority = 'Baixa' | 'Média' | 'Alta'
 
 export type UUID = `${string}-${string}-${string}-${string}-${string}`
 
