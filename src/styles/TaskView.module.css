@@ -1,0 +1,15 @@
+.info dt {
+  font-weight: 700;
+}
+.info dt::after {
+  content: ": ";
+}
+
+.info_dl {
+  display: flex;
+  gap: 1rem;
+}
+.info_dl div {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,7 +1,9 @@
 import * as types from 'utils/types'
 import styles from 'styles/TaskCard.module.css'
 
+import { useState } from 'react'
 import { useDraggable } from '@dnd-kit/core'
+import TaskView from 'layouts/modals/TaskView'
 import imgTaskDescription from 'assets/images/task_description.png'
 
 export interface TaskProps {
@@ -9,6 +11,8 @@ export interface TaskProps {
 }
 
 const Task = ({ task }: TaskProps) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+
   const { attributes, listeners, setNodeRef, transform }
     = useDraggable({ id: task.id });
 
@@ -21,28 +25,29 @@ const Task = ({ task }: TaskProps) => {
   )
 
   return (
-    <article 
-      {...listeners} {...attributes} 
-      ref={setNodeRef} style={style} className={styles.card}>
-        <span className={styles.title}>
-          {task.title}
-        </span>
-        <div className={styles.info}>
-          <div className={styles.leftArea}>
-            <div className={styles.label}>
-              {taskPriority}
-            </div>
-            {task.description?.length && (
-              <img src={imgTaskDescription} alt="O cartão tem descrição" />
-            )}
-          </div>
-          {/* <div className={styles.rightArea}> */}
-          <span className={styles.dueDate}>
-            {task.dueDate?.toDateString() || 'S/P'}
+    <>
+      <TaskView task={task} open={isOpen} onClose={() => setIsOpen(false)} />
+      <article 
+        {...listeners} {...attributes} onMouseUp={() => setIsOpen(true)}
+        ref={setNodeRef} style={style} className={styles.card}>
+          <span className={styles.title}>
+            {task.title}
           </span>
-          {/* </div> */}
-        </div>
-    </article>
+          <div className={styles.info}>
+            <div className={styles.leftArea}>
+              <div className={styles.label}>
+                {taskPriority}
+              </div>
+              {task.description?.length && (
+                <img src={imgTaskDescription} alt="O cartão tem descrição" />
+              )}
+            </div>
+            <span className={styles.dueDate}>
+              {task.dueDate?.toDateString() || 'S/P'}
+            </span>
+          </div>
+      </article>
+    </>
   )
 }
 
