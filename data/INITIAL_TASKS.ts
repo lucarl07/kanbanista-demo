@@ -12,7 +12,8 @@ export default [
     description: 'Lorem ipsum dolor sit...',
     priority: 'Low',
     dueDate: new Date(2025, 8, 30),
-    columnId: 2
+    columnId: 2,
+    createdAt: new Date(2024, 9, 13)
   },
   {
     id: crypto.randomUUID(),
@@ -20,13 +21,15 @@ export default [
     description: 'Lorem ipsum dolor sit...',
     priority: 'High',
     dueDate: new Date(2026, 2, 28),
-    columnId: 3
+    columnId: 3,
+    createdAt: new Date(2024, 9, 13)
   },
   {
     id: crypto.randomUUID(),
     title: 'Não muitos...',
     priority: 'High',
-    columnId: 3
+    columnId: 3,
+    createdAt: new Date(2024, 9, 13)
   },
   {
     id: crypto.randomUUID(),
@@ -34,13 +37,15 @@ export default [
     description: 'Lorem ipsum dolor sit...',
     priority: 'Medium',
     dueDate: new Date(new Date().setHours(14, 30)),
-    columnId: 3
+    columnId: 3,
+    createdAt: new Date(2024, 9, 13)
   },
   {
     id: crypto.randomUUID(),
     title: 'Levar o Billy ao banho e tosa',
     priority: 'Low',
     dueDate: new Date(2025, 6, 22),
-    columnId: 3
+    columnId: 3,
+    createdAt: new Date(2024, 9, 13)
   },
 ]

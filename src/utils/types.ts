@@ -14,4 +14,5 @@ export type Task = {
   priority: TaskPriority
   dueDate?: Date
   columnId: number
+  createdAt: Date
 }
