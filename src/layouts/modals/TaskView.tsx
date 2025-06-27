@@ -1,11 +1,14 @@
 // Data:
 import COLUMNS from 'data/COLUMNS'
 
-// Other imports:
+// Types:
 import * as types from 'utils/types.ts'
-import toPTBRLocale from 'utils/toPTBRLocale'
-import Modal, { type ModalProps } from 'components/Modal'
+import { type ModalProps } from 'components/Modal'
 import { type TaskProps } from 'components/Task'
+
+// Other imports:
+import toPTBRLocale from 'utils/toPTBRLocale'
+import Modal from 'components/Modal'
 import styles from 'styles/TaskView.module.css'
 
 interface TaskViewProps 
