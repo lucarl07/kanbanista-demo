@@ -2,7 +2,7 @@ import * as types from 'utils/types'
 import styles from 'styles/Column.module.css'
 
 import Modal from 'components/Modal'
-import TaskCard from 'components/TaskCard'
+import Task from 'components/Task'
 import { useDroppable } from '@dnd-kit/core'
 import { useState } from 'react'
 
@@ -40,7 +40,7 @@ function Column({ column, tasks }: ColumnProps) {
           className={styles.task_list_wrapper}>  
             <div className={styles.task_list}>
               {tasks.map(task => (
-                <TaskCard key={task.id} task={task}/>
+                <Task key={task.id} task={task}/>
               ))}
             </div>
             <button onClick={() => setIsModalOpen(true)}>

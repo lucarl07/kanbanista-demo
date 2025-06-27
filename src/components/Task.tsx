@@ -4,11 +4,11 @@ import styles from 'styles/TaskCard.module.css'
 import { useDraggable } from '@dnd-kit/core'
 import imgTaskDescription from 'assets/images/task_description.png'
 
-interface TaskCardProps {
+interface TaskProps {
   task: types.Task
 }
 
-const TaskCard = ({ task }: TaskCardProps) => {
+const Task = ({ task }: TaskProps) => {
   const { attributes, listeners, setNodeRef, transform }
     = useDraggable({ id: task.id });
 
@@ -46,4 +46,4 @@ const TaskCard = ({ task }: TaskCardProps) => {
   )
 }
 
-export default TaskCard
+export default Task
