@@ -1,4 +1,4 @@
-import * as types from 'utils/types'
+import * as types from 'src/types'
 import styles from 'styles/Column.module.css'
 
 import Modal from 'components/Modal'

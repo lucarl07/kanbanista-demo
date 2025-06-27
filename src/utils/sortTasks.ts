@@ -1,4 +1,4 @@
-import * as types from "utils/types";
+import * as types from "src/types";
 
 function getPriorityNumber(priority: types.TaskPriority): number {
   switch (priority) {

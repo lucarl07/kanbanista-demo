@@ -1,4 +1,4 @@
-import * as types from 'utils/types'
+import * as types from 'src/types'
 import styles from 'styles/TaskCard.module.css'
 
 import { useState } from 'react'

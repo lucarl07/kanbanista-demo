@@ -1,4 +1,4 @@
-import type { TaskPriority, PortugueseTaskPriority } from "utils/types";
+import type { TaskPriority, PortugueseTaskPriority } from "src/types";
 
 export default function translatePriority(
   priority: TaskPriority | PortugueseTaskPriority,

@@ -2,7 +2,7 @@
 import COLUMNS from 'data/COLUMNS'
 
 // Types:
-import * as types from 'utils/types.ts'
+import * as types from 'src/types'
 import { type ModalProps } from 'components/Modal'
 import { type TaskProps } from 'components/Task'
 
