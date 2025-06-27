@@ -8,7 +8,15 @@ interface ColumnProps {
   tasks: types.Task[]
 }
 
-const Column = ({ column, tasks }: ColumnProps) => {
+function onAddCard(column: types.Column): void {
+  console.log(`Adicionar cartão na coluna "${column.name}"`)
+}
+
+function onCheckOptions(): void {
+  console.log('Ver mais opções')
+}
+
+function Column({ column, tasks }: ColumnProps) {
   const { setNodeRef } = useDroppable({ id: column.id })
 
   return (
@@ -16,9 +24,8 @@ const Column = ({ column, tasks }: ColumnProps) => {
       <header>
         <h1>{column.name}</h1>
         <div className={styles.button_wrapper}>
-          {/* All console logs are placeholders for callback functions */}
-          <button onClick={() => console.log('Adicionar cartão')}>+</button>
-          <button onClick={() => console.log('Mais opções')}>…</button>
+          <button onClick={() => onAddCard(column)}>+</button>
+          <button onClick={() => onCheckOptions()}>…</button>
         </div>
       </header>
       <hr />
@@ -30,7 +37,7 @@ const Column = ({ column, tasks }: ColumnProps) => {
               <TaskCard key={task.id} task={task}/>
             ))}
           </div>
-          <button onClick={() => console.log('Adicionar cartão')}>
+          <button onClick={() => onAddCard(column)}>
             + Adicionar cartão
           </button>
       </div>
