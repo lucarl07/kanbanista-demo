@@ -1,0 +1,44 @@
+.overlay {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+  bottom: 0%;
+  background-color: rgba(0, 0, 0, .6);
+  z-index: 2;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 420px;
+  max-width: 600px;
+  background-color: #FFF;
+  z-index: 2;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  border-bottom: 1px solid #898989;
+  background-color: #D9D9D9;
+}
+.header h1, .header button {
+  color: #898989;
+  font-weight: 400;
+  font-size: 16px;
+}
+.header button {
+  background: none;
+  border: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
