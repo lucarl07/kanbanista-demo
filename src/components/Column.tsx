@@ -1,7 +1,7 @@
 import * as types from 'src/types'
 import styles from 'styles/Column.module.css'
 
-import Modal from 'components/Modal'
+import CreateTask from 'layouts/modals/CreateTask'
 import Task from 'components/Task'
 import { useDroppable } from '@dnd-kit/core'
 import { useState } from 'react'
@@ -22,10 +22,7 @@ function Column({ column, tasks }: ColumnProps) {
 
   return (
     <>
-      <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <h1>This is a placeholder modal.</h1>
-        <p>On next commits, this will be replaced by modal layouts inside the /layouts folder.</p>
-      </Modal>
+      <CreateTask column={column} open={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <section className={styles.column}>
         <header>
           <h1>{column.name}</h1>

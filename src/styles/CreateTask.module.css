@@ -1,0 +1,38 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.task_title {
+  font-size: 2rem;
+  font-weight: 700;
+  border-width: 0 0 1px 0;
+  outline-style: none;
+}
+
+.grid_A {
+  display: grid;
+  row-gap: 5px;
+  column-gap: 40px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.txt_description_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.grid_B {
+  display: grid;
+  row-gap: 5px;
+  column-gap: 24px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.grid_B :first-child {
+  grid-column: 1 / span 3;
+}
+.grid_B :nth-child(2) {
+  width: 234px;
+}
