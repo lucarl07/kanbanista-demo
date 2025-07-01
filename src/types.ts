@@ -17,3 +17,5 @@ export type Task = {
   columnId: number
   createdAt: Date
 }
+export type NewTask = Omit<Task, 'id' | 'createdAt'>
+export type TaskDraft = Partial<NewTask>

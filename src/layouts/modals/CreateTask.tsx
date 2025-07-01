@@ -10,13 +10,10 @@ extends Omit<ModalProps, 'name' | 'children'> {
   column: types.Column
 }
 
-type TaskDraft = Partial<types.Task>
-type NewTask = Omit<types.Task, 'id' | 'createdAt'>
-
 const columns = COLUMNS as types.Column[]
 
 export default function CreateTask({ column, open, onClose }: CreateTaskProps) {
-  const initialState: TaskDraft = {
+  const initialState: types.TaskDraft = {
     title: "Bom dia",
     description: "Bom dia",
     priority: "Low",
@@ -24,7 +21,7 @@ export default function CreateTask({ column, open, onClose }: CreateTaskProps) {
     columnId: column.id
   }
 
-  const formReducer = (prev: TaskDraft, next: TaskDraft) => {
+  const formReducer = (prev: types.TaskDraft, next: types.TaskDraft) => {
     return { ...prev, ...next }
   }
 
