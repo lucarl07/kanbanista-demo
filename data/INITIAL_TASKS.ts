@@ -5,7 +5,9 @@
  * features.
  */
 
-export default [
+import type { Task, DataActionTypes } from '../src/types'
+
+const tasks: Task[] = [
   {
     id: crypto.randomUUID(),
     title: 'Discutir campanha com a equipe de vendas',
@@ -49,3 +51,20 @@ export default [
     createdAt: new Date(2024, 9, 13)
   },
 ]
+
+export function updateTasks(action: DataActionTypes, task: Task) {
+  switch (action) {
+    case 'POST':
+      tasks.push(task)
+      break;
+    case 'PUT':
+    case 'DELETE':
+      window.alert('(T.B.D.)')
+      break;
+    default:
+      console.error('Invalid action given.')
+      break;
+  }
+}
+
+export default tasks
