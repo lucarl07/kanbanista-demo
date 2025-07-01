@@ -10,43 +10,64 @@ extends Omit<ModalProps, 'name' | 'children'> {
   column: types.Column
 }
 
-function reducer(state, action) {
-  /** T.B.D: Form reducer logic **/
-  return 0
-}
+type TaskDraft = Partial<types.Task>
+type NewTask = Omit<types.Task, 'id' | 'createdAt'>
 
 const columns = COLUMNS as types.Column[]
 
 export default function CreateTask({ column, open, onClose }: CreateTaskProps) {
-  const [formState, updateForm] = useReducer(reducer, 0) /** T.B.D: Assign <form> fields to formState **/
+  const initialState: TaskDraft = {
+    title: "Bom dia",
+    description: "Bom dia",
+    priority: "Low",
+    dueDate: new Date(),
+    columnId: column.id
+  }
+
+  const formReducer = (prev: TaskDraft, next: TaskDraft) => {
+    return { ...prev, ...next }
+  }
+
+  const [formState, updateForm] = useReducer(formReducer, initialState)
 
   return (
     <Modal open={open} onClose={onClose}>
       <form action="/" method="post" className={styles.form}>
         <input 
           type="text" name="title" 
+          value={formState.title}
           placeholder="Digite o nome do cartão..."
-          className={styles.task_title} />
+          className={styles.task_title}
+          onChange={(e) => updateForm({ title: e.target.value })} />
         <div className={styles.grid_A}>
           <label htmlFor="sel-priority">Prioridade:</label>
           <label htmlFor="in-due-date">Data de conclusão:</label>
-          <select name="priority" id="sel-priority">
-            <option value="">Escolha uma opção...</option>
-            <option value="Low">Baixa</option>
-            <option value="Medium">Média</option>
-            <option value="High">Alta</option>
+          <select 
+            name="priority" id="sel-priority" defaultValue="0"
+            onChange={(e) => updateForm({ priority: e.target.value as types.TaskPriority })}>
+              <option value="0">Escolha uma opção...</option>
+              <option value="Low">Baixa</option>
+              <option value="Medium">Média</option>
+              <option value="High">Alta</option>
           </select>
-          <input type="datetime-local" name="dueDate" id="in-due-date" />
+          <input 
+            type="datetime-local" name="dueDate" id="in-due-date"
+            // T.B.D: Assign value to input (with proper conversion)
+            onChange={(e) => updateForm({ dueDate: new Date(e.target.value) })} />
         </div>
         <div className={styles.txt_description_wrapper}>
           <label htmlFor="txt-description">Descrição:</label>
           <textarea 
+            value={formState.description}
             name="description" id="txt-description" 
-            placeholder="Comece a escrever sobre a tarefa..." />
+            placeholder="Comece a escrever sobre a tarefa..."
+            onChange={(e) => updateForm({ description: e.target.value })} />
         </div>
         <div className={styles.grid_B}>
           <label htmlFor="sel-column">Lista:</label>
-          <select name="column" id="sel-column" defaultValue={column.id}>
+          <select 
+            name="column" id="sel-column" defaultValue={column.id}
+            onChange={(e) => updateForm({ columnId: Number(e.target.value) })}>
             {columns.map(column => (
               <option key={column.id} value={column.id}>
                 {column.name}
