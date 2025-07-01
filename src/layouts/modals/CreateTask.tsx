@@ -14,9 +14,9 @@ const columns = COLUMNS as types.Column[]
 
 export default function CreateTask({ column, open, onClose }: CreateTaskProps) {
   const initialState: types.TaskDraft = {
-    title: "Bom dia",
-    description: "Bom dia",
-    priority: "Low",
+    title: '',
+    description: '',
+    priority: undefined,
     dueDate: new Date(),
     columnId: column.id
   }
