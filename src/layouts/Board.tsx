@@ -1,6 +1,6 @@
 // Data files:
 import COLUMNS from 'data/COLUMNS.ts'
-import INITIAL_TASKS from 'data/INITIAL_TASKS.ts'
+import TASKS from 'data/INITIAL_TASKS.ts'
 
 // Types & styles:
 import * as types from 'src/types'
@@ -13,11 +13,10 @@ import { DndContext } from '@dnd-kit/core'
 import sortTasks from 'utils/sortTasks'
 import Column from 'components/Column'
 
-const initialTasks = INITIAL_TASKS as types.Task[]
 const columns = COLUMNS as types.Column[]
 
 export default function Board() {
-  const [tasks, setTasks] = useState<types.Task[]>(initialTasks)
+  const [tasks, setTasks] = useState<types.Task[]>(TASKS)
 
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event

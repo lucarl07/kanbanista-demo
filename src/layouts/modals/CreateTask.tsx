@@ -3,11 +3,14 @@ import COLUMNS from 'data/COLUMNS.ts'
 import * as types from 'src/types'
 import { useReducer } from 'react'
 import Modal, { type ModalProps } from 'components/Modal'
+import addTask from 'utils/addTask'
 import styles from 'styles/CreateTask.module.css'
 
 interface CreateTaskProps 
 extends Omit<ModalProps, 'name' | 'children'> {
   column: types.Column
+  /* THE FOLLOWING MAY NOT BE USED: */
+  setTasks?: React.Dispatch<React.SetStateAction<types.Task[]>>
 }
 
 const columns = COLUMNS as types.Column[]
@@ -26,10 +29,16 @@ export default function CreateTask({ column, open, onClose }: CreateTaskProps) {
   }
 
   const [formState, updateForm] = useReducer(formReducer, initialState)
+  
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    addTask(formState)
+    onClose()
+  }
 
   return (
     <Modal open={open} onClose={onClose}>
-      <form action="/" method="post" className={styles.form}>
+      <form method="post" onSubmit={handleSubmit} className={styles.form}>
         <input 
           type="text" name="title" 
           value={formState.title}
@@ -40,9 +49,9 @@ export default function CreateTask({ column, open, onClose }: CreateTaskProps) {
           <label htmlFor="sel-priority">Prioridade:</label>
           <label htmlFor="in-due-date">Data de conclusão:</label>
           <select 
-            name="priority" id="sel-priority" defaultValue="0"
+            name="priority" id="sel-priority"
             onChange={(e) => updateForm({ priority: e.target.value as types.TaskPriority })}>
-              <option value="0">Escolha uma opção...</option>
+              <option value="">Escolha uma opção...</option>
               <option value="Low">Baixa</option>
               <option value="Medium">Média</option>
               <option value="High">Alta</option>
