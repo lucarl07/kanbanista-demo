@@ -8,17 +8,17 @@ type RequiredTask = WithRequired<types.TaskDraft, 'title' | 'priority' | 'column
 
 const columns = COLUMNS as types.Column[]
 
-export default function addTask(task: types.TaskDraft): void {
+export default function addTask(task: types.TaskDraft): boolean {
   const priorities: types.TaskPriority[] = ['Low', 'Medium', 'High']
 
   if (!task.title || task.title.length <= 0) {
     console.error('No title present.')
-    return;
+    return false
   }
 
   if (!task.priority || !priorities.includes(task.priority)) {
     console.error(`Invalid priority "${task.priority}"`)
-    return;
+    return false
   }
 
   if (
@@ -26,7 +26,7 @@ export default function addTask(task: types.TaskDraft): void {
     columns.some(column => column.id === task.columnId) === false
   ) {
     console.error('No title present.')
-    return;
+    return false
   }
 
   const finalDraft: types.Task = {
@@ -36,4 +36,5 @@ export default function addTask(task: types.TaskDraft): void {
   }
 
   updateTasks('POST', finalDraft)
+  return true
 }

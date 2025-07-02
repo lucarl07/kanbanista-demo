@@ -9,8 +9,6 @@ import styles from 'styles/CreateTask.module.css'
 interface CreateTaskProps 
 extends Omit<ModalProps, 'name' | 'children'> {
   column: types.Column
-  /* THE FOLLOWING MAY NOT BE USED: */
-  setTasks?: React.Dispatch<React.SetStateAction<types.Task[]>>
 }
 
 const columns = COLUMNS as types.Column[]
@@ -20,7 +18,7 @@ export default function CreateTask({ column, open, onClose }: CreateTaskProps) {
     title: '',
     description: '',
     priority: undefined,
-    dueDate: new Date(),
+    dueDate: undefined,
     columnId: column.id
   }
 
@@ -32,8 +30,8 @@ export default function CreateTask({ column, open, onClose }: CreateTaskProps) {
   
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    addTask(formState)
-    onClose()
+    const success = addTask(formState)
+    if (success) onClose()
   }
 
   return (
@@ -58,7 +56,6 @@ export default function CreateTask({ column, open, onClose }: CreateTaskProps) {
           </select>
           <input 
             type="datetime-local" name="dueDate" id="in-due-date"
-            // T.B.D: Assign value to input (with proper conversion)
             onChange={(e) => updateForm({ dueDate: new Date(e.target.value) })} />
         </div>
         <div className={styles.txt_description_wrapper}>
