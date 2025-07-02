@@ -6,8 +6,8 @@ import * as types from 'src/types'
 import styles from 'styles/CreateTask.module.css'
 
 // Other imports:
-import { useReducer } from 'react'
 import addTask from 'utils/addTask'
+import useDraftReducer from 'hooks/useDraftReducer'
 import Modal, { type ModalProps } from 'components/Modal'
 
 interface TaskDraftProps 
@@ -17,19 +17,7 @@ extends Omit<ModalProps, 'name' | 'children'> {
 }
 
 export default function TaskDraft({ column, open, onClose, defaults }: TaskDraftProps) {
-  const initialState: types.TaskDraft = defaults || {
-    title: '',
-    description: '',
-    priority: undefined,
-    dueDate: undefined,
-    columnId: column.id
-  }
-
-  const formReducer = (prev: types.TaskDraft, next: types.TaskDraft) => {
-    return { ...prev, ...next }
-  }
-
-  const [formState, updateForm] = useReducer(formReducer, initialState)
+  const [formState, updateForm] = useDraftReducer(column.id, defaults)
   
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
