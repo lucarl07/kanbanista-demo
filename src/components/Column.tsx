@@ -1,7 +1,7 @@
 import * as types from 'src/types'
 import styles from 'styles/Column.module.css'
 
-import CreateTask from 'layouts/modals/CreateTask'
+import TaskDraft from 'layouts/modals/TaskDraft'
 import Task from 'components/Task'
 import { useDroppable } from '@dnd-kit/core'
 import { useState } from 'react'
@@ -22,7 +22,7 @@ function Column({ column, tasks }: ColumnProps) {
 
   return (
     <>
-      <CreateTask column={column} open={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <TaskDraft column={column} open={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <section className={styles.column}>
         <header>
           <h1>{column.name}</h1>
