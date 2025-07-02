@@ -1,17 +1,20 @@
+// Data:
 import COLUMNS from 'data/COLUMNS.ts'
 
+// Types & styles:
 import * as types from 'src/types'
-import { useReducer } from 'react'
-import Modal, { type ModalProps } from 'components/Modal'
-import addTask from 'utils/addTask'
 import styles from 'styles/CreateTask.module.css'
+
+// Other imports:
+import { useReducer } from 'react'
+import addTask from 'utils/addTask'
+import Modal, { type ModalProps } from 'components/Modal'
 
 interface CreateTaskProps 
 extends Omit<ModalProps, 'name' | 'children'> {
-  column: types.Column
+  column: types.Column,
+  defaults?: types.TaskDraft
 }
-
-const columns = COLUMNS as types.Column[]
 
 export default function CreateTask({ column, open, onClose }: CreateTaskProps) {
   const initialState: types.TaskDraft = {
@@ -71,7 +74,7 @@ export default function CreateTask({ column, open, onClose }: CreateTaskProps) {
           <select 
             name="column" id="sel-column" defaultValue={column.id}
             onChange={(e) => updateForm({ columnId: Number(e.target.value) })}>
-            {columns.map(column => (
+            {COLUMNS.map(column => (
               <option key={column.id} value={column.id}>
                 {column.name}
               </option>
