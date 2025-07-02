@@ -13,8 +13,6 @@ import { DndContext } from '@dnd-kit/core'
 import sortTasks from 'utils/sortTasks'
 import Column from 'components/Column'
 
-const columns = COLUMNS as types.Column[]
-
 export default function Board() {
   const [tasks, setTasks] = useState<types.Task[]>(TASKS)
 
@@ -36,7 +34,7 @@ export default function Board() {
     <main className={styles.main}>
       <div className={styles.columns}>
         <DndContext onDragEnd={handleDragEnd}>
-          {columns.map(column => (
+          {COLUMNS.map(column => (
             <Column 
               key={column.id} 
               column={column} 
