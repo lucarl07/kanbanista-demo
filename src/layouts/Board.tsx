@@ -5,7 +5,7 @@ import TASKS from 'data/INITIAL_TASKS.ts'
 // Types & styles:
 import * as types from 'src/types'
 import { type DragEndEvent } from '@dnd-kit/core'
-import styles from 'styles/App.module.css'
+import styles from 'styles/Board.module.css'
 
 // Modules & components:
 import { useState } from 'react'

@@ -1,0 +1,12 @@
+.main {
+  margin: 36px 54px;
+}
+.dev_btn {
+  margin-bottom: 1rem;
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+  gap: 26px;
+}
