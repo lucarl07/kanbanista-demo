@@ -24,12 +24,22 @@ const Task = ({ task }: TaskProps) => {
     task.priority === 'Medium' ? 'Média' : 'Baixa'
   )
 
+  const handleMouseUp = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    if (e.button === 0) {
+      setIsOpen(true)
+    }
+  }
+  const handleContextMenu = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    e.preventDefault()
+  }
+
   return (
     <>
       <TaskView task={task} open={isOpen} onClose={() => setIsOpen(false)} />
       <article 
-        {...listeners} {...attributes} onMouseUp={() => setIsOpen(true)}
-        ref={setNodeRef} style={style} className={styles.card}>
+        {...listeners} {...attributes} ref={setNodeRef}
+        onMouseUp={handleMouseUp}
+        style={style} className={styles.card}>
           <span className={styles.title}>
             {task.title}
           </span>
