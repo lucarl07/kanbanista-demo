@@ -44,6 +44,7 @@ const Task = ({ task }: TaskProps) => {
     const { pageX, pageY } = e
     setContextMenu({ show: true, x: pageX, y: pageY })
   }
+  const closeContextMenu = () => setContextMenu(initialContextMenu)
 
   // Component logic:
   const style = {
@@ -57,7 +58,9 @@ const Task = ({ task }: TaskProps) => {
     <>
       <TaskView task={task} open={isOpen} onClose={() => setIsOpen(false)} />
 
-      {contextMenu.show && <ContextMenu x={contextMenu.x} y={contextMenu.y} />}
+      {contextMenu.show && (
+        <ContextMenu x={contextMenu.x} y={contextMenu.y} onClose={closeContextMenu} />
+      )}
 
       <article 
         {...listeners} {...attributes} ref={setNodeRef}

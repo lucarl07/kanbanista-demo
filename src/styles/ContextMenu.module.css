@@ -1,0 +1,15 @@
+.context_menu {
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+
+  padding: .75rem;
+  width: 180px;
+  max-height: 120px;
+  
+  background-color: white;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, .35);
+  border: 1px solid black;
+  border-radius: .75rem;
+}
