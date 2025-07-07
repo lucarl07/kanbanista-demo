@@ -1,7 +1,7 @@
 import * as types from 'src/types'
 import styles from 'styles/TaskCard.module.css'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useDraggable } from '@dnd-kit/core'
 
 import TaskView from 'layouts/modals/TaskView'
