@@ -7,16 +7,16 @@ import styles from 'styles/CreateTask.module.css'
 
 // Other imports:
 import addTask from 'utils/addTask'
-import useDraftReducer from 'hooks/useDraftReducer'
-import Modal, { type ModalProps } from 'components/Modal'
+import useDraftReducer from 'src/hooks/useDraftReducer'
+import Modal, { type Props as ModalProps } from 'components/Modal'
 
-interface TaskDraftProps 
-extends Omit<ModalProps, 'name' | 'children'> {
+type SomeModalProps = Omit<ModalProps, 'name' | 'children'>
+interface Props extends SomeModalProps {
   column: types.Column,
   defaults?: types.TaskDraft
 }
 
-export default function TaskDraft({ column, open, onClose, defaults }: TaskDraftProps) {
+export default function TaskDraft({ column, open, onClose, defaults }: Props) {
   const [formState, updateForm] = useDraftReducer(column.id, defaults)
   
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

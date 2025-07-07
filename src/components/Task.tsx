@@ -8,7 +8,7 @@ import TaskView from 'layouts/modals/TaskView'
 import ContextMenu from 'components/ContextMenu'
 import imgTaskDescription from 'assets/images/task_description.png'
 
-export interface TaskProps {
+export interface Props {
   task: types.Task
 }
 
@@ -22,7 +22,7 @@ const initialContextMenu: ContextMenuState = {
   show: false, x: 0, y: 0 
 }
 
-const Task = ({ task }: TaskProps) => {
+const Task = ({ task }: Props) => {
   // Modal & context menu state:
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [contextMenu, setContextMenu]

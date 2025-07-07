@@ -2,14 +2,14 @@ import { type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import styles from 'styles/Modal.module.css'
 
-export interface ModalProps {
+export interface Props {
   name?: string
   open: boolean
   children?: ReactNode
   onClose(): void
 }
 
-export default function Modal({ name, open, children, onClose }: ModalProps) {
+export default function Modal({ name, open, children, onClose }: Props) {
   return open && createPortal(
     <>
       <div className={styles.overlay} onClick={onClose} />

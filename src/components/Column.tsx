@@ -6,7 +6,7 @@ import Task from 'components/Task'
 import { useDroppable } from '@dnd-kit/core'
 import { useState } from 'react'
 
-interface ColumnProps {
+interface Props {
   column: types.Column
   tasks: types.Task[]
 }
@@ -15,7 +15,7 @@ function onCheckOptions(): void {
   console.log('Ver mais opções')
 }
 
-function Column({ column, tasks }: ColumnProps) {
+function Column({ column, tasks }: Props) {
   const { setNodeRef } = useDroppable({ id: column.id })
   
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)

@@ -3,22 +3,21 @@ import COLUMNS from 'data/COLUMNS'
 
 // Types:
 import * as types from 'src/types'
-import { type ModalProps } from 'components/Modal'
-import { type TaskProps } from 'components/Task'
+import { type Props as ModalProps } from 'components/Modal'
+import { type Props as TaskProps } from 'components/Task'
 
 // Other imports:
 import toPTBRLocale from 'utils/toPTBRLocale'
 import Modal from 'components/Modal'
 import styles from 'styles/TaskView.module.css'
 
-interface TaskViewProps 
-  extends Omit<ModalProps, 'name' | 'children'>, 
-  TaskProps {}
+type SomeModalProps = Omit<ModalProps, 'name' | 'children'>
+interface Props extends SomeModalProps, TaskProps {}
 
 const columns = COLUMNS as types.Column[]
 const priorities: types.TaskPriority[] = ['Low', 'Medium', 'High']
 
-export default function TaskView({ task, open, onClose }: TaskViewProps) {
+export default function TaskView({ task, open, onClose }: Props) {
   const createdAtTime = toPTBRLocale(task.createdAt, 'time')
   const createdAtDate = toPTBRLocale(task.createdAt, 'date')
   
