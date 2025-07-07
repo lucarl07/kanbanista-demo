@@ -16,7 +16,7 @@ import Column from 'components/Column'
 export default function Board() {
   const [tasks, setTasks] = useState<types.Task[]>(TASKS)
 
-  function handleDragEnd(event: DragEndEvent) {
+  const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event
 
     if (!over) return;
