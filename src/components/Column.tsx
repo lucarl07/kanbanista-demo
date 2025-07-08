@@ -1,10 +1,11 @@
 import * as types from 'src/types'
 import styles from 'styles/Column.module.css'
 
-import TaskDraft from 'layouts/modals/TaskDraft'
-import Task from 'components/Task'
 import { useDroppable } from '@dnd-kit/core'
 import { useState } from 'react'
+
+import TaskDraft from 'components/modals/TaskDraft'
+import Task from 'components/Task'
 
 interface Props {
   column: types.Column

@@ -8,7 +8,7 @@ import styles from 'styles/CreateTask.module.css'
 // Other imports:
 import addTask from 'utils/addTask'
 import useDraftReducer from 'src/hooks/useDraftReducer'
-import Modal, { type Props as ModalProps } from 'components/Modal'
+import Modal, { type Props as ModalProps } from 'layouts/Modal'
 
 type SomeModalProps = Omit<ModalProps, 'name' | 'children'>
 interface Props extends SomeModalProps {

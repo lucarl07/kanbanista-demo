@@ -3,12 +3,12 @@ import COLUMNS from 'data/COLUMNS'
 
 // Types:
 import * as types from 'src/types'
-import { type Props as ModalProps } from 'components/Modal'
+import { type Props as ModalProps } from 'layouts/Modal'
 import { type Props as TaskProps } from 'components/Task'
 
 // Other imports:
 import toPTBRLocale from 'utils/toPTBRLocale'
-import Modal from 'components/Modal'
+import Modal from 'src/layouts/Modal'
 import styles from 'styles/TaskView.module.css'
 
 type SomeModalProps = Omit<ModalProps, 'name' | 'children'>

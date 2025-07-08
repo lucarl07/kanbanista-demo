@@ -4,7 +4,7 @@ import styles from 'styles/TaskCard.module.css'
 import React, { useState } from 'react'
 import { useDraggable } from '@dnd-kit/core'
 
-import TaskView from 'layouts/modals/TaskView'
+import TaskView from 'components/modals/TaskView'
 import ContextMenu from 'components/ContextMenu'
 import imgTaskDescription from 'assets/images/task_description.png'
 
