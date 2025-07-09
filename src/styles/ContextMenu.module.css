@@ -13,3 +13,11 @@
   border: 1px solid black;
   border-radius: .75rem;
 }
+
+.separator {
+  margin: .5rem 0;
+}
+
+.options {
+  list-style-type: none;
+}

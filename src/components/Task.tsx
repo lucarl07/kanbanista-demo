@@ -59,7 +59,9 @@ const Task = ({ task }: Props) => {
       <TaskView task={task} open={isOpen} onClose={() => setIsOpen(false)} />
 
       {contextMenu.show && (
-        <ContextMenu x={contextMenu.x} y={contextMenu.y} onClose={closeContextMenu} />
+        <ContextMenu 
+          x={contextMenu.x} y={contextMenu.y} 
+          task={task} onClose={closeContextMenu} />
       )}
 
       <article 
