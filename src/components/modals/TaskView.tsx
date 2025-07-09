@@ -1,5 +1,6 @@
 // Data:
-import COLUMNS from 'data/COLUMNS'
+import getBoardData from 'utils/getBoardData'
+const { COLUMNS } = getBoardData()
 
 // Types:
 import * as types from 'src/types'

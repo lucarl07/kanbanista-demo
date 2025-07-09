@@ -2,15 +2,23 @@ import $ from 'styles/DeleteTaskDialog.module.css'
 import { type Props as TaskProps } from 'components/Task'
 import Modal, { type Props as ModalProps } from 'layouts/Modal'
 
-import { updateTasks } from 'data/INITIAL_TASKS'
-
 type SomeModalProps = Pick<ModalProps, 'open' | 'onClose'>
 
 interface Props extends SomeModalProps, TaskProps {}
 
 export default function DeleteTaskDialog({ task, open, onClose }: Props) {
   const handleConfirm = () => {
-    updateTasks('DELETE', task)
+    // updateTasks('DELETE', task)
+    /** May be replaced by:
+    const { TASKS } = getBoardData()
+    const taskIndex = TASKS.findIndex(
+      prevTask => prevTask.id === task.id
+    )
+    const newTasks = TASKS.splice(taskIndex, 1)
+
+    localStorage.setItem('tasks', JSON.stringify(newTasks))
+    onClose()
+   */
     onClose()
   }
 
