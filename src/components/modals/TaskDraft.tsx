@@ -1,11 +1,9 @@
-// Data:
-import COLUMNS from 'data/COLUMNS.ts'
-
 // Types & styles:
 import * as types from 'src/types'
 import styles from 'styles/CreateTask.module.css'
 
 // Other imports:
+import getBoardData from 'utils/getBoardData'
 import addTask from 'utils/addTask'
 import useDraftReducer from 'src/hooks/useDraftReducer'
 import Modal, { type Props as ModalProps } from 'layouts/Modal'
@@ -17,12 +15,17 @@ interface Props extends SomeModalProps {
 }
 
 export default function TaskDraft({ column, open, onClose, defaults }: Props) {
+  const { COLUMNS } = getBoardData()
   const [formState, updateForm] = useDraftReducer(column.id, defaults)
   
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const success = addTask(formState)
-    if (success) onClose()
+    
+    if (success) {
+      window.location.reload()
+      onClose()
+    }
   }
 
   return (

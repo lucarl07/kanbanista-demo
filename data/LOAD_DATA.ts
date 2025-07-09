@@ -1,13 +1,12 @@
-/** Why not JSON?
- * Answer: I found it would be a hassle to do the proper conversions from JSON to 
- * TypeScript, especially considering I'd have to import the Node.js "fs" module
- * for asynchronous operations w/ "readFile" just to not depend on Node experimental
- * features.
- */
+import type { Column, Task } from '../src/types'
 
-import type { Task, DataActionTypes } from '../src/types'
+const INITIAL_COLUMNS: Column[] = [
+  { id: 1, name: 'A fazer' },
+  { id: 2, name: 'Em andamento' },
+  { id: 3, name: 'Concluído' },
+]
 
-const tasks: Task[] = [
+const INITIAL_TASKS: Task[] = [
   {
     id: crypto.randomUUID(),
     title: 'Discutir campanha com a equipe de vendas',
@@ -52,19 +51,11 @@ const tasks: Task[] = [
   },
 ]
 
-export function updateTasks(action: DataActionTypes, task: Task) {
-  switch (action) {
-    case 'POST':
-      tasks.push(task)
-      break;
-    case 'PUT':
-    case 'DELETE':
-      window.alert('(T.B.D.)')
-      break;
-    default:
-      console.error('Invalid action given.')
-      break;
-  }
-}
-
-export default tasks
+localStorage.setItem(
+  'columns',
+  JSON.stringify(INITIAL_COLUMNS)
+)
+localStorage.setItem(
+  'tasks',
+  JSON.stringify(INITIAL_TASKS)
+)
