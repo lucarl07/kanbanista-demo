@@ -1,6 +1,5 @@
-// Data files:
-import COLUMNS from 'data/COLUMNS.ts'
-import TASKS from 'data/INITIAL_TASKS.ts'
+// Data loading:
+import getBoardData from 'utils/getBoardData'
 
 // Types & styles:
 import * as types from 'src/types'
@@ -14,6 +13,7 @@ import sortTasks from 'utils/sortTasks'
 import Column from 'components/Column'
 
 export default function Board() {
+  const { COLUMNS, TASKS } = getBoardData()
   const [tasks, setTasks] = useState<types.Task[]>(TASKS)
 
   const handleDragEnd = (event: DragEndEvent) => {
