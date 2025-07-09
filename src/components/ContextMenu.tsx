@@ -4,7 +4,7 @@ import * as types from 'src/types'
 
 // Modules:
 import { useRef, type CSSProperties } from 'react'
-import useOnOutsideClick from 'hooks/useOnOutsideClick'
+import useClickOutside from 'hooks/useClickOutside'
 import useContextMenuOptions from 'hooks/useContextMenuOptions'
 
 // Option modals & dialogs:
