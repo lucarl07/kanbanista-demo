@@ -27,8 +27,8 @@ export default function ContextMenu({ x, y, task, onClose }: Props) {
     const stateValues: boolean[] = Object.values(state)
 
     if (stateValues.every(val => val === false)) {
-      // When there is not any option currently open,
-      // closes the menu when clicking anything outside:
+      /* When there is not any option currently open,
+      closes the menu when clicking anything outside: */
       onClose() 
     }
   })
