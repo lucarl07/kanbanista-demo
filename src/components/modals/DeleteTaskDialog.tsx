@@ -2,11 +2,18 @@ import $ from 'styles/DeleteTaskDialog.module.css'
 import { type Props as TaskProps } from 'components/Task'
 import Modal, { type Props as ModalProps } from 'layouts/Modal'
 
+import { updateTasks } from 'data/INITIAL_TASKS'
+
 type SomeModalProps = Pick<ModalProps, 'open' | 'onClose'>
 
 interface Props extends SomeModalProps, TaskProps {}
 
 export default function DeleteTaskDialog({ task, open, onClose }: Props) {
+  const handleConfirm = () => {
+    updateTasks('DELETE', task)
+    onClose()
+  }
+
   return (
     <Modal name="Excluir cartão" open={open} onClose={onClose}>
       <div className={$.content_wrapper}>
@@ -22,7 +29,7 @@ export default function DeleteTaskDialog({ task, open, onClose }: Props) {
           </li>
         </ul>
         <div className={$.btn_group}>
-          <button>
+          <button onClick={handleConfirm}>
             Excluir
           </button>
           <button onClick={onClose}>

@@ -53,12 +53,17 @@ const tasks: Task[] = [
 ]
 
 export function updateTasks(action: DataActionTypes, task: Task) {
+  const taskIndex = tasks.findIndex(x => x.id === task.id)
+
   switch (action) {
     case 'POST':
       tasks.push(task)
       break;
-    case 'PUT':
     case 'DELETE':
+      tasks.splice(taskIndex, 1)
+      console.log('Apagado!', tasks)
+      break;
+    case 'PUT':
       window.alert('(T.B.D.)')
       break;
     default:
