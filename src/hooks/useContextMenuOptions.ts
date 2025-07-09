@@ -1,15 +1,13 @@
 import { useReducer } from 'react'
+import type { 
+  ContextMenuReducerAction as ReducerAction 
+} from 'src/types'
 
 interface OptionsState {
   isEditTaskOpen: boolean
   isArchiveTaskOpen: boolean
   isDeleteTaskOpen: boolean
 }
-
-type ReducerAction = [
-  type: 'editTask' | 'archiveTask' | 'deleteTask', 
-  value?: boolean
-]
 
 type Output = [
   state: OptionsState, 

@@ -21,3 +21,8 @@ export type NewTask = Omit<Task, 'id' | 'createdAt'>
 export type TaskDraft = Partial<NewTask>
 
 export type DataActionTypes = 'POST' | 'PUT' | 'DELETE'
+
+export type ContextMenuReducerAction = [
+  type: 'editTask' | 'archiveTask' | 'deleteTask', 
+  value?: boolean
+]
