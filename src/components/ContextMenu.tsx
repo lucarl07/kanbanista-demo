@@ -19,9 +19,17 @@ interface Props {
 
 export default function ContextMenu({ x, y, task, onClose }: Props) {
   const ref = useRef<HTMLDivElement>(null)
-  useOnOutsideClick(ref, onClose) // Closes the menu when clicking anything outside
-
   const [state, dispatch] = useContextMenuOptions()
+
+  useClickOutside(ref, () => {
+    const stateValues: boolean[] = Object.values(state)
+
+    if (stateValues.every(val => val === false)) {
+      // When there is not any option currently open,
+      // closes the menu when clicking anything outside:
+      onClose() 
+    }
+  })
 
   const relativeStyle: CSSProperties = {
     top: `${y}px`,
