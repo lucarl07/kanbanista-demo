@@ -33,8 +33,10 @@ export default function ContextMenu({ x, y, task, onClose }: Props) {
     }
   })
 
-  const handleCloseModal = (...args: ReducerAction) => {
-    dispatch(args)
+  const handleCloseModal = (
+    actionType: ReducerAction[0]
+  ) => {
+    dispatch([actionType, false])
     onClose()
   }
 
@@ -48,7 +50,7 @@ export default function ContextMenu({ x, y, task, onClose }: Props) {
       {/* Option modals: */}
       <DelTask 
         task={task} open={state.isDeleteTaskOpen} 
-        onClose={() => handleCloseModal('deleteTask', false)} />
+        onClose={() => handleCloseModal('deleteTask')} />
 
       {/* Component: */}
       <div 
