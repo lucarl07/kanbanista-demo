@@ -4,9 +4,8 @@
   display: flex;
   flex-direction: column;
 
-  padding: .75rem;
   width: 180px;
-  max-height: 120px;
+  /* max-height: 120px; Maybe will be used for future reference */
   
   background-color: white;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, .35);
@@ -14,10 +13,24 @@
   border-radius: .75rem;
 }
 
-.separator {
-  margin: .5rem 0;
-}
-
 .options {
   list-style-type: none;
+}
+
+.options li {
+  padding: .75rem;
+}
+.options li:first-of-type {
+  border-radius: .75rem .75rem 0 0;
+}
+.options li:last-of-type {
+  border-radius: 0 0 .75rem .75rem;
+}
+.options li:hover {
+  background-color: #d9d9d9;
+}
+
+.options .separator {
+  margin: 0 .75rem;
+  border: 1px solid #898989;
 }
