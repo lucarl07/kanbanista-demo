@@ -5,8 +5,17 @@
  * features.
  */
 
-export default [
+import type { Column } from '../src/types'
+
+const INITIAL_COLUMNS: Column[] = [
   { id: 1, name: 'A fazer' },
   { id: 2, name: 'Em andamento' },
   { id: 3, name: 'Concluído' },
 ]
+
+localStorage.setItem(
+  'columns',
+  JSON.stringify(INITIAL_COLUMNS)
+)
+
+export default INITIAL_COLUMNS

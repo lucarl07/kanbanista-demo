@@ -7,7 +7,7 @@
 
 import type { Task, DataActionTypes } from '../src/types'
 
-const tasks: Task[] = [
+const INITIAL_TASKS: Task[] = [
   {
     id: crypto.randomUUID(),
     title: 'Discutir campanha com a equipe de vendas',
@@ -52,16 +52,21 @@ const tasks: Task[] = [
   },
 ]
 
+localStorage.setItem(
+  'tasks',
+  JSON.stringify(INITIAL_TASKS)
+)
+
 export function updateTasks(action: DataActionTypes, task: Task) {
-  const taskIndex = tasks.findIndex(x => x.id === task.id)
+  const taskIndex = INITIAL_TASKS.findIndex(x => x.id === task.id)
 
   switch (action) {
     case 'POST':
-      tasks.push(task)
+      INITIAL_TASKS.push(task)
       break;
     case 'DELETE':
-      tasks.splice(taskIndex, 1)
-      console.log('Apagado!', tasks)
+      INITIAL_TASKS.splice(taskIndex, 1)
+      console.log('Apagado!', INITIAL_TASKS)
       break;
     case 'PUT':
       window.alert('(T.B.D.)')
@@ -72,4 +77,4 @@ export function updateTasks(action: DataActionTypes, task: Task) {
   }
 }
 
-export default tasks
+export default INITIAL_TASKS
