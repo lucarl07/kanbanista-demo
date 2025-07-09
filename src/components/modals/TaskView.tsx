@@ -1,13 +1,10 @@
-// Data:
-import getBoardData from 'utils/getBoardData'
-const { COLUMNS } = getBoardData()
-
 // Types:
 import * as types from 'src/types'
 import { type Props as ModalProps } from 'layouts/Modal'
 import { type Props as TaskProps } from 'components/Task'
 
 // Other imports:
+import getBoardData from 'utils/getBoardData'
 import toPTBRLocale from 'utils/toPTBRLocale'
 import Modal from 'src/layouts/Modal'
 import styles from 'styles/TaskView.module.css'
@@ -15,10 +12,12 @@ import styles from 'styles/TaskView.module.css'
 type SomeModalProps = Omit<ModalProps, 'name' | 'children'>
 interface Props extends SomeModalProps, TaskProps {}
 
-const columns = COLUMNS as types.Column[]
-const priorities: types.TaskPriority[] = ['Low', 'Medium', 'High']
-
 export default function TaskView({ task, open, onClose }: Props) {
+  const { COLUMNS } = getBoardData()
+  const priorities: types.TaskPriority[] = [
+    'Low', 'Medium', 'High'
+  ]
+
   const createdAtTime = toPTBRLocale(task.createdAt, 'time')
   const createdAtDate = toPTBRLocale(task.createdAt, 'date')
   
@@ -40,8 +39,8 @@ export default function TaskView({ task, open, onClose }: Props) {
             <dd>
               <select 
                 name="selColumn" id="col-select"
-                defaultValue={columns.find(col => col.id === task.columnId)?.id}>
-                  {columns.map((col) => (
+                defaultValue={COLUMNS.find(col => col.id === task.columnId)?.id}>
+                  {COLUMNS.map((col) => (
                     <option key={col.id} value={col.id}>
                       {col.name}
                     </option>
