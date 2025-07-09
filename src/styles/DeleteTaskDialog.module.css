@@ -1,7 +1,33 @@
-.title {}
+.content_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
 
-.warning_list {}
+.title {
+  max-width: 400px;
+  font-size: 2rem;
+  text-align: center;
+}
 
-.warning_list .strong_warning {}
+.warning_list {
+  max-width: 400px;
+  display: inherit;
+  flex-direction: inherit;
+  gap: .5rem;
+  font-size: 18px;
+}
 
-.btn_group {}
+.warning_list .strong_warning {
+  font-weight: 600;
+}
+
+.btn_group {
+  display: inherit;
+  gap: 1rem;
+}
+.btn_group button {
+  width: 135px;
+  height: 42px;
+}
