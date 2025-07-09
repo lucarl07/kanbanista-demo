@@ -58,9 +58,7 @@ export default function ContextMenu({ x, y, task, onClose }: Props) {
             <li>
               Opções (T.B.D)
             </li>
-          </ul>
-          <hr className={styles.separator} />
-          <ul className={styles.options}>
+            <hr className={styles.separator} />
             <li onClick={() => dispatch(['deleteTask', true])}>
               🗑 Excluir cartão
             </li>
