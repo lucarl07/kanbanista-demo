@@ -1,12 +1,11 @@
 import * as types from 'src/types'
-import COLUMNS from 'data/COLUMNS'
-import { updateTasks } from 'data/INITIAL_TASKS'
+import getBoardData from 'utils/getBoardData'
 
 type WithRequired<T, K extends keyof T> = T & { [P in K]-?: T[P] }
 
 type RequiredTask = WithRequired<types.TaskDraft, 'title' | 'priority' | 'columnId'>
 
-const columns = COLUMNS as types.Column[]
+const { COLUMNS, TASKS } = getBoardData()
 
 export default function addTask(task: types.TaskDraft): boolean {
   const priorities: types.TaskPriority[] = ['Low', 'Medium', 'High']
@@ -23,7 +22,7 @@ export default function addTask(task: types.TaskDraft): boolean {
 
   if (
     !task.columnId || 
-    columns.some(column => column.id === task.columnId) === false
+    COLUMNS.some(column => column.id === task.columnId) === false
   ) {
     console.error('No title present.')
     return false
@@ -35,6 +34,8 @@ export default function addTask(task: types.TaskDraft): boolean {
     createdAt: new Date()
   }
 
-  updateTasks('POST', finalDraft)
+  TASKS.push(finalDraft)
+  localStorage.setItem('tasks', JSON.stringify(TASKS))
+
   return true
 }
