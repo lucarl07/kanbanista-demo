@@ -3,7 +3,7 @@ import styles from 'styles/ContextMenu.module.css'
 import * as types from 'src/types'
 
 // Modules:
-import { useRef, type CSSProperties } from 'react'
+import { useRef } from 'react'
 import useClickOutside from 'hooks/useClickOutside'
 import useContextMenuOptions from 'hooks/useContextMenuOptions'
 
@@ -16,6 +16,8 @@ interface Props {
   task: types.Task
   onClose: () => void
 }
+
+type ReducerAction = types.ContextMenuReducerAction
 
 export default function ContextMenu({ x, y, task, onClose }: Props) {
   const ref = useRef<HTMLDivElement>(null)
@@ -31,23 +33,32 @@ export default function ContextMenu({ x, y, task, onClose }: Props) {
     }
   })
 
-  const relativeStyle: CSSProperties = {
+  const handleCloseModal = (...args: ReducerAction) => {
+    dispatch(args)
+    onClose()
+  }
+
+  const relativeStyle: React.CSSProperties = {
     top: `${y}px`,
     left: `${x}px`,
   }
 
   return (
     <>
-      {/* Option modals & dialogs: */}
+      {/* Option modals: */}
       <DelTask 
         task={task} open={state.isDeleteTaskOpen} 
-        onClose={() => dispatch(['deleteTask', false])} />
+        onClose={() => handleCloseModal('deleteTask', false)} />
 
       {/* Component: */}
       <div 
         ref={ref} style={relativeStyle} 
         className={styles.context_menu}>
-          Opções (T.B.D.)
+          <ul className={styles.options}>
+            <li>
+              Opções (T.B.D)
+            </li>
+          </ul>
           <hr className={styles.separator} />
           <ul className={styles.options}>
             <li onClick={() => dispatch(['deleteTask', true])}>
