@@ -1,4 +1,5 @@
 // Data loading:
+import 'data/LOAD_DATA'
 import getBoardData from 'utils/getBoardData'
 
 // Types & styles:
