@@ -1,6 +1,5 @@
 // Data loading:
-// import 'data/LOAD_DATA' // [Will be continuously commented & uncommented on development]
-import getBoardData from 'utils/getBoardData'
+import 'data/LOAD_DATA'
 
 // Types & styles:
 import * as types from 'src/types'
@@ -10,6 +9,7 @@ import styles from 'styles/Board.module.css'
 // Modules & components:
 import { useState } from 'react'
 import { DndContext } from '@dnd-kit/core'
+import getBoardData from 'utils/getBoardData'
 import sortTasks from 'utils/sortTasks'
 import Column from 'components/Column'
 

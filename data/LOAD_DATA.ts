@@ -1,11 +1,17 @@
-import type { Column, Task } from '../src/types'
+import type { Column /*, Task*/ } from '../src/types'
 
-const INITIAL_COLUMNS: Column[] = [
+export const INITIAL_COLUMNS: Column[] = [
   { id: 1, name: 'A fazer' },
   { id: 2, name: 'Em andamento' },
   { id: 3, name: 'Concluído' },
 ]
 
+localStorage.setItem(
+  'columns',
+  JSON.stringify(INITIAL_COLUMNS)
+)
+
+/* Former initial tasks:
 const INITIAL_TASKS: Task[] = [
   {
     id: crypto.randomUUID(),
@@ -50,12 +56,4 @@ const INITIAL_TASKS: Task[] = [
     createdAt: new Date(2024, 9, 13)
   },
 ]
-
-localStorage.setItem(
-  'columns',
-  JSON.stringify(INITIAL_COLUMNS)
-)
-localStorage.setItem(
-  'tasks',
-  JSON.stringify(INITIAL_TASKS)
-)
+*/
