@@ -11,7 +11,7 @@ export default function getBoardData(): Output {
   ) as Column[]
   
   const TASKS = JSON.parse(
-    localStorage.getItem('tasks')!
+    localStorage.getItem('tasks') || '[]'
   ) as Task[]
   
   // Transform Task dates because of JSON parsing
