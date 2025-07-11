@@ -8,7 +8,8 @@ import useClickOutside from 'hooks/useClickOutside'
 import useContextMenuOptions from 'hooks/useContextMenuOptions'
 
 // Option modals & dialogs:
-import DelTask from 'components/modals/DeleteTaskDialog'
+import TaskView from 'components/modals/TaskView'
+import DeleteTaskDialog from 'components/modals/DeleteTaskDialog'
 
 interface Props {
   x: number
@@ -48,7 +49,11 @@ export default function ContextMenu({ x, y, task, onClose }: Props) {
   return (
     <>
       {/* Option modals: */}
-      <DelTask 
+      <TaskView 
+        task={task} open={state.isViewTaskOpen} 
+        onClose={() => handleCloseModal('viewTask')} />
+
+      <DeleteTaskDialog 
         task={task} open={state.isDeleteTaskOpen} 
         onClose={() => handleCloseModal('deleteTask')} />
 
@@ -57,12 +62,12 @@ export default function ContextMenu({ x, y, task, onClose }: Props) {
         ref={ref} style={relativeStyle} 
         className={styles.context_menu}>
           <ul className={styles.options}>
-            <li>
-              Opções (T.B.D)
+            <li onClick={() => dispatch(['viewTask', true])}>
+              🎫 Visualizar cartão 
             </li>
             <hr className={styles.separator} />
             <li onClick={() => dispatch(['deleteTask', true])}>
-              🗑 Excluir cartão
+              🗑️ Excluir cartão
             </li>
           </ul>
       </div>
