@@ -1,5 +1,5 @@
 import * as types from 'src/types'
-import styles from 'styles/TaskCard.module.css'
+import styles from 'styles/Task.module.css'
 
 import React, { useState } from 'react'
 import { useDraggable } from '@dnd-kit/core'
