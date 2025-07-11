@@ -47,7 +47,7 @@ const Task = ({ task }: Props) => {
   const closeContextMenu = () => setContextMenu(initialContextMenu)
 
   // Component logic:
-  const style = {
+  const relativeStyle = {
     transform: `translate(${transform?.x || 0}px, ${transform?.y || 0}px)`
   }
   const priority = task.priority === 'High' ? 'Alta' : (
@@ -68,7 +68,8 @@ const Task = ({ task }: Props) => {
         {...listeners} {...attributes} ref={setNodeRef}
         onMouseUp={handleMouseUp}
         onContextMenu={handleContextMenu}
-        style={style} className={styles.card}>
+        className={styles.card}
+        style={relativeStyle}>
           <span className={styles.title}>
             {task.title}
           </span>
