@@ -28,9 +28,19 @@ export default function addTask(task: types.TaskDraft): boolean {
     return false
   }
 
+  let trimmedDescription = task.description?.trim()
+  
+  if (
+    trimmedDescription &&
+    trimmedDescription.length === 0
+  ) {
+    trimmedDescription = undefined
+  }
+
   const finalDraft: types.Task = {
     id: crypto.randomUUID(),
     ...task as RequiredTask,
+    description: trimmedDescription,
     createdAt: new Date()
   }
 
