@@ -77,7 +77,7 @@ const Task = ({ task }: Props) => {
               <div className={styles.label}>
                 {priority}
               </div>
-              {task.description?.length && (
+              {task.description && (
                 <img src={imgTaskDescription} alt="O cartão tem descrição" />
               )}
             </div>
