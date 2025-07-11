@@ -23,6 +23,6 @@ export type TaskDraft = Partial<NewTask>
 export type DataActionTypes = 'POST' | 'PUT' | 'DELETE'
 
 export type ContextMenuReducerAction = [
-  type: 'editTask' | 'archiveTask' | 'deleteTask', 
+  type: 'viewTask' | 'editTask' | 'archiveTask' | 'deleteTask', 
   value?: boolean
 ]
