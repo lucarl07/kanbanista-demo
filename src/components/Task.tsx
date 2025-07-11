@@ -33,11 +33,6 @@ const Task = ({ task }: Props) => {
     = useDraggable({ id: task.id });
 
   // Event handlers:
-  const handleMouseUp = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    if (e.button === 0) {
-      setIsOpen(true)
-    }
-  }
   const handleContextMenu = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     e.preventDefault()
 
@@ -66,7 +61,6 @@ const Task = ({ task }: Props) => {
 
       <article 
         {...listeners} {...attributes} ref={setNodeRef}
-        onMouseUp={handleMouseUp}
         onContextMenu={handleContextMenu}
         className={styles.card}
         style={relativeStyle}>
