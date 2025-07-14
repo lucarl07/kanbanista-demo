@@ -22,7 +22,13 @@ export default function TaskDraft({ column, open, onClose, defaults }: Props) {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const success = updateTask(formState, 'create')
+    let success: boolean
+    
+    if (!defaults) {
+      success = updateTask(formState, 'create')
+    } else {
+      success = updateTask(formState, 'edit', defaults.id)
+    }
     
     if (success) {
       window.location.reload()
