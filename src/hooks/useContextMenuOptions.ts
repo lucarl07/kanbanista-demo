@@ -30,12 +30,13 @@ export default function useContextMenuOptions(): Output {
     }
 
     switch (action[0]) {
-      case 'editTask': 
+      case 'viewTask':
+        return { ...state, isViewTaskOpen: action[1] }
+      case 'editTask':
+        return { ...state, isEditTaskOpen: action[1] }
       case 'archiveTask':
         window.alert('(T.B.D)')
         break;
-      case 'viewTask':
-        return { ...state, isViewTaskOpen: action[1] }
       case 'deleteTask':
         return { ...state, isDeleteTaskOpen: action[1] }
       default:
