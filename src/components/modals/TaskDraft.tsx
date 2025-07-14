@@ -45,9 +45,10 @@ export default function TaskDraft({ column, open, onClose, defaults }: Props) {
             <label htmlFor="sel-priority">Prioridade:</label>
             <label htmlFor="in-due-date">Data de conclusão:</label>
             <select 
-              name="priority" id="sel-priority"
+              name="priority" id="sel-priority" 
+              defaultValue={defaults?.priority || "0"}
               onChange={(e) => updateForm({ priority: e.target.value as types.TaskPriority })}>
-                <option value="">Escolha uma opção...</option>
+                <option value="0" disabled>Escolha uma opção...</option>
                 <option value="Low">Baixa</option>
                 <option value="Medium">Média</option>
                 <option value="High">Alta</option>
