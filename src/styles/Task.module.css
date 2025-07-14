@@ -5,6 +5,9 @@
   gap: .5rem;
   background-color: #fff;
 }
+.card:active {
+  cursor: move;
+}
 
 .title {
   font-size: 1.25rem;
