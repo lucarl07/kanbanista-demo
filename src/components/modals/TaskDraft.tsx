@@ -18,6 +18,8 @@ export default function TaskDraft({ column, open, onClose, defaults }: Props) {
   const { COLUMNS } = getBoardData()
   const [formState, updateForm] = useDraftReducer(column.id, defaults)
   
+  const dueDateToString = formState.dueDate?.toISOString().split('.')[0]
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const success = addTask(formState)
@@ -51,7 +53,10 @@ export default function TaskDraft({ column, open, onClose, defaults }: Props) {
                 <option value="High">Alta</option>
             </select>
             <input 
-              type="datetime-local" name="dueDate" id="in-due-date"
+              value={dueDateToString}
+              type="datetime-local" 
+              name="dueDate" 
+              id="in-due-date"
               onChange={(e) => updateForm({ dueDate: new Date(e.target.value) })} />
           </div>
           <div className={styles.txt_description_wrapper}>
@@ -65,7 +70,8 @@ export default function TaskDraft({ column, open, onClose, defaults }: Props) {
           <div className={styles.grid_B}>
             <label htmlFor="sel-column">Lista:</label>
             <select 
-              name="column" id="sel-column" defaultValue={column.id}
+              name="column" id="sel-column" 
+              defaultValue={column.id}
               onChange={(e) => updateForm({ columnId: Number(e.target.value) })}>
               {COLUMNS.map(column => (
                 <option key={column.id} value={column.id}>
@@ -74,7 +80,7 @@ export default function TaskDraft({ column, open, onClose, defaults }: Props) {
               ))}
             </select>
             <button type="submit" className={styles.btn_submit}>
-              Criar cartão
+              {defaults ? 'Salvar alterações' : 'Criar cartão'}
             </button>
             <button type="reset" className={styles.btn_clear}>
               Limpar tudo
