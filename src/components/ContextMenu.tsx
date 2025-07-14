@@ -6,9 +6,11 @@ import * as types from 'src/types'
 import { useRef } from 'react'
 import useClickOutside from 'hooks/useClickOutside'
 import useContextMenuOptions from 'hooks/useContextMenuOptions'
+import getBoardData from 'utils/getBoardData'
 
 // Option modals & dialogs:
 import TaskView from 'components/modals/TaskView'
+import TaskDraft from 'components/modals/TaskDraft'
 import DeleteTaskDialog from 'components/modals/DeleteTaskDialog'
 
 interface Props {
@@ -21,6 +23,7 @@ interface Props {
 type ReducerAction = types.ContextMenuReducerAction
 
 export default function ContextMenu({ x, y, task, onClose }: Props) {
+  const { COLUMNS } = getBoardData()
   const ref = useRef<HTMLDivElement>(null)
   const [state, dispatch] = useContextMenuOptions()
 
@@ -46,12 +49,22 @@ export default function ContextMenu({ x, y, task, onClose }: Props) {
     left: `${x}px`,
   }
 
+  const taskColumn = COLUMNS.find(
+    column => column.id === task.columnId
+  )!
+
   return (
     <>
       {/* Option modals: */}
       <TaskView 
         task={task} open={state.isViewTaskOpen} 
         onClose={() => handleCloseModal('viewTask')} />
+
+      <TaskDraft 
+        defaults={task}
+        column={taskColumn}
+        open={state.isEditTaskOpen} 
+        onClose={() => handleCloseModal('editTask')} />
 
       <DeleteTaskDialog 
         task={task} open={state.isDeleteTaskOpen} 
@@ -63,7 +76,10 @@ export default function ContextMenu({ x, y, task, onClose }: Props) {
         className={styles.context_menu}>
           <ul className={styles.options}>
             <li onClick={() => dispatch(['viewTask', true])}>
-              🎫 Visualizar cartão 
+              🎫 Abrir cartão
+            </li>
+            <li onClick={() => dispatch(['editTask', true])}>
+              📝 Editar cartão
             </li>
             <hr className={styles.separator} />
             <li onClick={() => dispatch(['deleteTask', true])}>
