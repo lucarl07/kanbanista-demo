@@ -4,14 +4,14 @@ import styles from 'styles/CreateTask.module.css'
 
 // Other imports:
 import getBoardData from 'utils/getBoardData'
-import addTask from 'utils/addTask'
+import updateTask from 'utils/updateTask'
 import useDraftReducer from 'src/hooks/useDraftReducer'
 import Modal, { type Props as ModalProps } from 'layouts/Modal'
 
 type SomeModalProps = Omit<ModalProps, 'name' | 'children'>
 interface Props extends SomeModalProps {
   column: types.Column,
-  defaults?: types.TaskDraft
+  defaults?: types.Task
 }
 
 export default function TaskDraft({ column, open, onClose, defaults }: Props) {
@@ -22,7 +22,7 @@ export default function TaskDraft({ column, open, onClose, defaults }: Props) {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const success = addTask(formState)
+    const success = updateTask(formState, 'create')
     
     if (success) {
       window.location.reload()
