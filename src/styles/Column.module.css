@@ -16,6 +16,10 @@
   gap: .75rem;
 }
 
+button {
+  cursor: pointer;
+}
+
 .column hr {
   border-color: #000000;
 }

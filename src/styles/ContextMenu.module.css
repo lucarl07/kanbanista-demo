@@ -18,6 +18,7 @@
 }
 
 .options li {
+  cursor: pointer;
   padding: .75rem;
 }
 .options li:first-of-type {

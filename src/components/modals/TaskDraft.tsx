@@ -1,6 +1,6 @@
 // Types & styles:
 import * as types from 'src/types'
-import styles from 'styles/CreateTask.module.css'
+import styles from 'styles/TaskDraft.module.css'
 
 // Other imports:
 import getBoardData from 'utils/getBoardData'
