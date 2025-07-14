@@ -63,7 +63,7 @@ export default function ContextMenu({ x, y, task, onClose }: Props) {
         className={styles.context_menu}>
           <ul className={styles.options}>
             <li onClick={() => dispatch(['viewTask', true])}>
-              🎫 Visualizar cartão 
+              🎫 Abrir cartão
             </li>
             <hr className={styles.separator} />
             <li onClick={() => dispatch(['deleteTask', true])}>
