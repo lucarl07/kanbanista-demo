@@ -20,6 +20,7 @@ export default function TaskView({ task, open, onClose }: Props) {
 
   const createdAtTime = toPTBRLocale(task.createdAt, 'time')
   const createdAtDate = toPTBRLocale(task.createdAt, 'date')
+  const dueDate = toPTBRLocale(task.dueDate, 'date')
   
   return (
     <Modal name="Visualizar cartão" open={open} onClose={onClose}>
@@ -35,7 +36,7 @@ export default function TaskView({ task, open, onClose }: Props) {
             <dt>Prioridade</dt>
           </div>
           <div>
-            <dd>{task?.dueDate?.toLocaleDateString() || 'Sem prazo'}</dd>
+            <dd>{dueDate || 'Sem prazo'}</dd>
             <dd>
               <select 
                 name="selColumn" id="col-select"

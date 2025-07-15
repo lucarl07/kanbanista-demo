@@ -7,6 +7,7 @@ import { useDraggable } from '@dnd-kit/core'
 import TaskView from 'components/modals/TaskView'
 import ContextMenu from 'components/ContextMenu'
 import imgTaskDescription from 'assets/images/task_description.png'
+import toPTBRLocale from 'utils/toPTBRLocale'
 
 export interface Props {
   task: types.Task
@@ -77,7 +78,7 @@ const Task = ({ task }: Props) => {
               )}
             </div>
             <span className={styles.dueDate}>
-              {task.dueDate?.toDateString() || 'S/P'}
+              {toPTBRLocale(task.dueDate, 'shortDate') || '[S/P]'}
             </span>
           </div>
       </article>
