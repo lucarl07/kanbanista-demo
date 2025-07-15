@@ -37,9 +37,6 @@ export default function useContextMenuOptions(): Output {
       case 'archiveTask':
         window.alert('(T.B.D)')
         break;
-      case 'viewTask':
-        console.log(`Chegou até a função reducer!`)
-        return { ...state, isViewTaskOpen: action[1] }
       case 'deleteTask':
         return { ...state, isDeleteTaskOpen: action[1] }
       default:
