@@ -12,14 +12,12 @@ interface Props {
   tasks: types.Task[]
 }
 
-function onCheckOptions(): void {
-  console.log('Ver mais opções')
-}
-
 function Column({ column, tasks }: Props) {
   const { setNodeRef } = useDroppable({ id: column.id })
-  
+
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+
+  const onCheckOptions = () => console.log('Ver mais opções')
 
   return (
     <>
