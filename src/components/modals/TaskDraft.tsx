@@ -64,6 +64,7 @@ export default function TaskDraft({ column, open, onClose, defaults }: Props) {
               type="datetime-local" 
               name="dueDate" 
               id="in-due-date"
+              onKeyDown={(e) => e.preventDefault()}
               onChange={(e) => updateForm({ dueDate: new Date(e.target.value) })} />
           </div>
           <div className={styles.txt_description_wrapper}>
